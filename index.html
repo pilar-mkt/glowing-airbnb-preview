@@ -206,6 +206,16 @@
   footer { border-top: 1px solid var(--line); padding: 40px 0; font-size: 17px; color: var(--ink-muted); }
   .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
+  /* Mobile: hero buttons side by side, header on one line */
+  .btn { white-space: nowrap; }
+  @media (max-width: 560px) {
+    .hero-ctas { flex-wrap: nowrap; gap: 10px; }
+    .hero-ctas .btn { flex: 1 1 0; min-width: 0; padding: 13px 10px; font-size: 17px; }
+    .brand { font-size: 18px; white-space: nowrap; }
+    .header-cta { padding: 9px 14px !important; font-size: 15px !important; }
+    .header-inner { padding: 12px 16px; }
+  }
+
   /* Reveal */
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
   .reveal.in { opacity: 1; transform: none; }
@@ -225,7 +235,7 @@
     <nav aria-label="Primary">
       <a href="#">Home</a><a href="#">About</a><a href="#">Services</a><a href="#">Schedule</a><a href="#">Locations</a><a href="#">Reviews</a><a href="#">Contact</a>
     </nav>
-    <a class="btn btn-primary" href="#host-form" style="padding:10px 20px;font-size:17px">Get host pricing</a>
+    <a class="btn btn-primary header-cta" href="#host-form" style="padding:10px 20px;font-size:17px">Get pricing</a>
   </div>
 </header>
 
@@ -239,7 +249,7 @@
         <p class="lead muted">Turnover cleaning for short-term rentals, with linens and laundry included. Send us your checkout dates and we’ll take care of every turnover.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#host-form">Send us your listing</a>
-          <a class="btn btn-ghost" href="#pricing">See host pricing</a>
+          <a class="btn btn-ghost" href="#pricing">See pricing</a>
         </div>
         <div class="hero-trust">
           <span>Insured &amp; bonded</span><span>Background-checked team</span><span>Linens included</span>
