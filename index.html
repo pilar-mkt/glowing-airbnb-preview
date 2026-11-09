@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Airbnb Host Cleaning | Glowing Home Cleaners (preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --canvas: #f6f4ef;
+    --canvas-2: #efebe2;
+    --ink: #17302a;
+    --ink-muted: #4d5c56;
+    --emerald: #1f6b52;
+    --emerald-deep: #134836;
+    --emerald-soft: rgba(31, 107, 82, 0.10);
+    --line: rgba(31, 107, 82, 0.18);
+    --glass: rgba(255, 255, 255, 0.55);
+    --gold: #b8955a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--canvas);
+    color: var(--ink);
+    font-size: 20px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 85% -10%, rgba(31,107,82,0.08), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(184,149,90,0.08), transparent 60%);
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Preview banner */
+  .preview-bar {
+    background: var(--ink); color: #f6f4ef; text-align: center;
+    font-size: 16px; padding: 8px 16px; letter-spacing: 0.02em;
+  }
+
+  /* Header (mirrors the site's glass strip) */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(246, 244, 239, 0.78);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; max-width: 1400px; margin: 0 auto; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 21px; font-weight: 500; }
+  .brand img { width: 40px; height: 40px; border-radius: 999px; object-fit: cover; }
+  nav { display: flex; gap: 4px; }
+  nav a { text-decoration: none; padding: 8px 14px; border-radius: 999px; font-size: 18px; color: var(--ink-muted); transition: background .3s, color .3s; }
+  nav a:hover { background: var(--emerald-soft); color: var(--ink); }
+  @media (max-width: 900px) { nav { display: none; } }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 28px; border-radius: 999px; font-family: inherit; font-size: 19px; font-weight: 600;
+    text-decoration: none; cursor: pointer; border: 1px solid transparent;
+    transition: transform .4s cubic-bezier(.22,1,.36,1), background .3s, box-shadow .3s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--emerald); color: #f6f4ef; box-shadow: 0 8px 24px rgba(19,72,54,0.22); }
+  .btn-primary:hover { background: var(--emerald-deep); }
+  .btn-ghost { background: var(--glass); border-color: var(--line); color: var(--ink); backdrop-filter: blur(8px); }
+
+  .eyebrow { font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--emerald); font-weight: 600; }
+  h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; line-height: 1.08; }
+  h1 { font-size: clamp(44px, 7vw, 84px); }
+  h2 { font-size: clamp(34px, 4.6vw, 54px); }
+  h3 { font-size: 26px; font-weight: 600; line-height: 1.2; }
+  .muted { color: var(--ink-muted); }
+  section { padding: 96px 0; }
+  @media (max-width: 700px) { section { padding: 64px 0; } }
+  .section-head { max-width: 720px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
+
+  .glass {
+    background: var(--glass); border: 1px solid var(--line); border-radius: 28px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 20px 50px -30px rgba(23,48,42,0.25);
+  }
+
+  /* Hero */
+  .hero { padding: 72px 0 96px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 24px; }
+  .hero-copy p.lead { font-size: 24px; max-width: 560px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-trust { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: 17px; color: var(--ink-muted); }
+  .hero-trust span::before { content: "✓"; color: var(--emerald); margin-right: 6px; font-weight: 700; }
+  .photo {
+    position: relative; border-radius: 32px; overflow: hidden; min-height: 460px;
+    background:
+      linear-gradient(160deg, rgba(255,255,255,0.0) 40%, rgba(19,72,54,0.18)),
+      linear-gradient(135deg, #e9e3d6 0%, #d9d1bf 45%, #c9d6cc 100%);
+    border: 1px solid var(--line);
+  }
+  .photo-label {
+    position: absolute; left: 20px; bottom: 20px; right: 20px;
+    font-size: 16px; color: var(--ink); background: rgba(246,244,239,0.85);
+    padding: 10px 14px; border-radius: 14px; border: 1px dashed var(--line);
+  }
+  .rating-chip {
+    position: absolute; top: 20px; left: 20px; display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(246,244,239,0.92); border-radius: 999px; padding: 8px 16px; font-size: 17px; font-weight: 600;
+    border: 1px solid var(--line);
+  }
+  .rating-chip .stars { color: var(--gold); letter-spacing: 1px; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .photo { min-height: 320px; } }
+
+  /* Rule band */
+  .rule { background: var(--ink); color: #f1efe8; }
+  .rule .eyebrow { color: #d9c08f; }
+  .rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .rule h2 { color: #f6f4ef; }
+  .rule-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .rule-item { border: 1px solid rgba(217,192,143,0.35); border-radius: 18px; padding: 18px 20px; font-size: 19px; color: #e3e8e2; }
+  .rule-item b { display: block; color: #f6f4ef; font-size: 21px; margin-bottom: 2px; }
+  .rule small { display: block; margin-top: 18px; font-size: 15px; color: #b8c7c0; }
+  @media (max-width: 900px) { .rule-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .rule-list { grid-template-columns: 1fr; } }
+
+  /* Included */
+  .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; }
+  .icon {
+    width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--emerald-soft); color: var(--emerald);
+  }
+  .icon svg { width: 24px; height: 24px; }
+  .tag { align-self: flex-start; font-size: 14px; padding: 3px 10px; border-radius: 999px; background: #f1e7d3; color: #7a5b25; font-weight: 600; }
+  @media (max-width: 1000px) { .cards-4 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .cards-4 { grid-template-columns: 1fr; } }
+
+  /* Steps */
+  .alt { background: var(--canvas-2); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: step; }
+  .step { padding: 34px 30px; position: relative; }
+  .step .num { font-size: 64px; line-height: 1; color: var(--emerald); font-weight: 600; margin-bottom: 14px; font-style: italic; }
+  @media (max-width: 900px) { .steps { grid-template-columns: 1fr; } }
+
+  /* Pricing */
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .price-card { padding: 34px 30px; display: flex; flex-direction: column; gap: 10px; }
+  .price-card.featured { background: var(--ink); color: #f1efe8; border-color: var(--ink); }
+  .price-card.featured .muted { color: #c3d0ca; }
+  .price { font-size: 56px; font-weight: 600; line-height: 1; margin: 6px 0; }
+  .price small { font-size: 18px; font-weight: 500; }
+  .placeholder { background: #fbe9b8; color: #5c4300; padding: 0 6px; border-radius: 6px; }
+  .price-card.featured .placeholder { background: #d9c08f; color: #2a2210; }
+  .price-note { margin-top: 24px; padding: 20px 24px; display: flex; gap: 14px; align-items: center; font-size: 19px; }
+  @media (max-width: 900px) { .pricing { grid-template-columns: 1fr; } }
+
+  /* Why */
+  .why-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+  .checks { display: flex; flex-direction: column; }
+  .check { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .check:last-child { border-bottom: none; }
+  .check .icon { flex: none; width: 40px; height: 40px; border-radius: 12px; }
+  .check b { display: block; font-size: 22px; }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .review { padding: 30px 28px; display: flex; flex-direction: column; gap: 14px; }
+  .review .stars { color: var(--gold); letter-spacing: 2px; font-size: 20px; }
+  .review blockquote { font-size: 22px; font-style: italic; line-height: 1.4; }
+  @media (max-width: 900px) { .reviews { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq { max-width: 860px; }
+  details { border-bottom: 1px solid var(--line); padding: 22px 0; }
+  summary { cursor: pointer; list-style: none; font-size: 24px; font-weight: 600; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--emerald); font-size: 28px; line-height: 1; transition: transform .3s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin-top: 10px; color: var(--ink-muted); max-width: 760px; }
+
+  /* Form */
+  .form-section { background: linear-gradient(180deg, var(--canvas) 0%, var(--canvas-2) 100%); }
+  .form-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+  form { padding: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  label { font-size: 17px; color: var(--ink-muted); }
+  input, select, textarea {
+    font-family: inherit; font-size: 19px; color: var(--ink);
+    background: rgba(255,255,255,0.7); border: 1px solid var(--line); border-radius: 16px;
+    padding: 13px 16px; width: 100%; outline: none; transition: border-color .2s, box-shadow .2s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(31,107,82,0.15); }
+  textarea { min-height: 110px; resize: vertical; }
+  .form-status { grid-column: 1 / -1; display: none; border-radius: 16px; padding: 12px 16px; font-size: 18px; background: var(--emerald-soft); border: 1px solid rgba(31,107,82,0.3); }
+  .contact-alt { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; font-size: 19px; }
+  .contact-alt a { color: var(--emerald); font-weight: 600; text-decoration: none; }
+  @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { form { grid-template-columns: 1fr; padding: 24px; } }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0; font-size: 17px; color: var(--ink-muted); }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">Preview — not live. Prices in yellow are placeholders until Chris confirms them.</div>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#">
+      <img src="https://glowinghomecleaners.com/assets/images/logo.png" alt="Glowing Home Cleaners logo" onerror="this.style.display='none'" />
+      <span>Glowing Home Cleaners</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#">Home</a><a href="#">About</a><a href="#">Services</a><a href="#">Schedule</a><a href="#">Locations</a><a href="#">Reviews</a><a href="#">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="#host-form" style="padding:10px 20px;font-size:17px">Get host pricing</a>
+  </div>
+</header>
+
+<main>
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">For Orange County Airbnb hosts</p>
+        <h1>Guest-ready after every checkout.</h1>
+        <p class="lead muted">Turnover cleaning for short-term rentals, with linens and laundry included. Send us your checkout dates and we’ll take care of every turnover.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#host-form">Send us your listing</a>
+          <a class="btn btn-ghost" href="#pricing">See host pricing</a>
+        </div>
+        <div class="hero-trust">
+          <span>Insured &amp; bonded</span><span>Background-checked team</span><span>Linens included</span>
+        </div>
+      </div>
+      <div class="photo reveal" role="img" aria-label="Photo placeholder: a guest-ready bedroom">
+        <div class="photo-label">Photo: guest-ready bedroom with fresh linens (to be supplied)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. THE NEW RULE -->
+  <section class="rule">
+    <div class="wrap rule-grid">
+      <div class="reveal" style="display:flex;flex-direction:column;gap:18px">
+        <p class="eyebrow">Airbnb’s new checkout rules · Nov 20</p>
+        <h2>Your guests won’t do the dishes anymore. We will.</h2>
+        <p style="color:#d2ddd7;font-size:21px">For reservations booked on or after November 20, 2026, Airbnb hosts can no longer require guests to do cleaning chores before they leave. That work now lands on every turnover.</p>
+      </div>
+      <div class="reveal">
+        <div class="rule-list">
+          <div class="rule-item"><b>Dishes</b>Washing and putting away</div>
+          <div class="rule-item"><b>Beds</b>Stripping sheets</div>
+          <div class="rule-item"><b>Laundry</b>Starting a load</div>
+          <div class="rule-item"><b>Trash</b>Taking it off-site</div>
+        </div>
+        <small>Hosts can still ask, but not require, small things like leaving dishes in the sink or gathering towels.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHAT'S INCLUDED -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The Glowing Host Plan</p>
+        <h2>Everything a turnover needs</h2>
+      </div>
+      <div class="cards-4">
+        <div class="glass card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></div>
+          <h3>Guest-ready turnover</h3>
+          <p class="muted">A full clean and reset between every guest, kitchen to bathrooms.</p>
+        </div>
+        <div class="glass card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16"/><path d="M4 18V9a3 3 0 013-3h10a3 3 0 013 3v9"/><path d="M4 13h16"/></svg></div>
+          <h3>Linens &amp; laundry included</h3>
+          <p class="muted">Beds made fresh and towels folded, every single time.</p>
+        </div>
+        <div class="glass card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M9 15l2 2 4-4"/></svg></div>
+          <h3>Booked ahead</h3>
+          <p class="muted">Share your checkout dates and we reserve each turnover in advance.</p>
+        </div>
+        <div class="glass card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></div>
+          <span class="tag">To confirm</span>
+          <h3>Photo report</h3>
+          <p class="muted">Photos after each clean, so you know it’s ready without being there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HOW IT WORKS -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps, then it runs itself</h2>
+      </div>
+      <div class="steps">
+        <div class="glass step reveal">
+          <div class="num">1</div>
+          <h3>Send your listing</h3>
+          <p class="muted">Share your Airbnb link and your upcoming checkout dates.</p>
+        </div>
+        <div class="glass step reveal">
+          <div class="num">2</div>
+          <h3>Get your flat price</h3>
+          <p class="muted">We confirm one price per turnover and reserve your dates.</p>
+        </div>
+        <div class="glass step reveal">
+          <div class="num">3</div>
+          <h3>We handle every checkout</h3>
+          <p class="muted">We clean, reset and confirm your place is guest-ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Host pricing</p>
+        <h2>One flat price per turnover</h2>
+        <p class="muted">Easy to build into your Airbnb cleaning fee. Linens and laundry included.</p>
+      </div>
+      <div class="pricing">
+        <div class="glass price-card reveal">
+          <h3>Studio &amp; 1 bedroom</h3>
+          <div class="price"><span class="placeholder">$__</span> <small>/ turnover</small></div>
+          <p class="muted">Up to [__] sq ft</p>
+        </div>
+        <div class="glass price-card featured reveal">
+          <h3>2–3 bedrooms</h3>
+          <div class="price"><span class="placeholder">$__</span> <small>/ turnover</small></div>
+          <p class="muted">Most popular with Orange County hosts</p>
+        </div>
+        <div class="glass price-card reveal">
+          <h3>4+ bedrooms</h3>
+          <div class="price"><span class="placeholder">$__</span> <small>/ turnover</small></div>
+          <p class="muted">Larger homes, quoted on your listing</p>
+        </div>
+      </div>
+      <div class="glass price-note reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div>
+        <p><b>Host discount:</b> <span class="placeholder">[__]% off</span> from your <span class="placeholder">[3rd]</span> turnover each month. Restocking available as an add-on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHY GLOWING -->
+  <section class="alt">
+    <div class="wrap why-grid">
+      <div class="reveal" style="display:flex;flex-direction:column;gap:18px">
+        <p class="eyebrow">Why hosts choose Glowing</p>
+        <h2>Your reviews depend on the turnover.</h2>
+        <p class="muted">One missed detail can cost you a five-star review. We clean like the next guest is checking our work, because they are.</p>
+      </div>
+      <div class="glass reveal" style="padding:8px 32px">
+        <div class="checks">
+          <div class="check"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><div><b>Insured &amp; bonded</b><span class="muted">Your property is protected on every visit.</span></div></div>
+          <div class="check"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><b>Background-checked cleaners</b><span class="muted">The people entering your home are vetted.</span></div></div>
+          <div class="check"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div><div><b>Same cleaner whenever possible</b><span class="muted">Someone who knows your place and your standards.</span></div></div>
+          <div class="check"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>Final walkthrough</b><span class="muted">Every turnover is checked before we leave.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. REVIEWS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Reviews</p>
+        <h2>What our clients say</h2>
+      </div>
+      <div class="reviews">
+        <div class="glass review reveal">
+          <blockquote>[Real Google review, ideally from an Airbnb host]</blockquote>
+          <p class="muted">[Name, City]</p>
+        </div>
+        <div class="glass review reveal">
+          <blockquote>[Real Google review]</blockquote>
+          <p class="muted">[Name, City]</p>
+        </div>
+        <div class="glass review reveal">
+          <blockquote>[Real Google review]</blockquote>
+          <p class="muted">[Name, City]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Host questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details><summary>Can you clean the same day as checkout?</summary><p>Yes, subject to availability. The best way to guarantee it is to send us your checkout dates ahead of time so we can reserve each turnover.</p></details>
+        <details><summary>Do you wash the linens and towels?</summary><p>Yes. Linens and laundry are included in the Host Plan, and beds are made fresh for the next guest.</p></details>
+        <details><summary>How do you get into the property?</summary><p>[To confirm with Chris: lockbox, smart lock code or key handoff.]</p></details>
+        <details><summary>What if a booking is cancelled or moved?</summary><p>[To confirm with Chris: notice needed to reschedule or cancel a turnover.]</p></details>
+        <details><summary>Which areas do you cover?</summary><p>[To confirm with Chris: e.g. Newport Beach, Anaheim, Dana Point, Laguna Beach and nearby Orange County cities.]</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FORM -->
+  <section class="form-section" id="host-form">
+    <div class="wrap form-grid">
+      <div class="reveal" style="display:flex;flex-direction:column;gap:18px">
+        <p class="eyebrow">Get started</p>
+        <h2>Send us your listing</h2>
+        <p class="muted">We’ll reply with your flat turnover price and available dates.</p>
+        <div class="contact-alt">
+          <span class="muted">Prefer to talk?</span>
+          <a href="tel:+19499897589">(949) 989-7589</a>
+        </div>
+      </div>
+      <form class="glass reveal" onsubmit="event.preventDefault(); var s=document.getElementById('status'); s.style.display='block';">
+        <div class="field"><label for="f-name">Full name *</label><input id="f-name" required /></div>
+        <div class="field"><label for="f-email">Email *</label><input id="f-email" type="email" required /></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" /></div>
+        <div class="field"><label for="f-city">City *</label>
+          <select id="f-city" required><option value="">Select…</option><option>Newport Beach</option><option>Anaheim</option><option>Dana Point</option><option>Laguna Beach</option><option>Huntington Beach</option><option>Other</option></select></div>
+        <div class="field full"><label for="f-listing">Airbnb listing link</label><input id="f-listing" type="url" placeholder="https://www.airbnb.com/rooms/…" /></div>
+        <div class="field"><label for="f-beds">Bedrooms *</label>
+          <select id="f-beds" required><option value="">Select…</option><option>Studio</option><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+        <div class="field"><label for="f-turns">Turnovers per month (approx.)</label>
+          <select id="f-turns"><option value="">Select…</option><option>1–3</option><option>4–8</option><option>9+</option></select></div>
+        <div class="field full"><label for="f-notes">Anything we should know?</label><textarea id="f-notes" placeholder="Checkout times, access, special requests…"></textarea></div>
+        <div class="form-status" id="status">Preview only: in the live version, this sends the request and shows a confirmation.</div>
+        <div class="field full"><button class="btn btn-primary" type="submit">Get my host pricing</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© Glowing Home Cleaners · Orange County, CA</span>
+    <span>Header and footer will match the live site.</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
