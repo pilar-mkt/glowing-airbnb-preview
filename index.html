@@ -115,6 +115,21 @@
   .rating-chip .stars { color: var(--gold); letter-spacing: 1px; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .photo { min-height: 320px; } }
 
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .why-photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 24px; border: 1px solid var(--line); margin-top: 10px; }
+
+  /* Before & after */
+  .ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ba-card { padding: 12px; display: flex; flex-direction: column; gap: 12px; }
+  .ba-pair { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .ba-tile { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 2 / 1; background: var(--canvas-2); }
+  .ba-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ba-tag { position: absolute; left: 10px; top: 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 999px; background: rgba(246,244,239,0.92); color: var(--ink); }
+  .ba-tile.after .ba-tag { background: var(--emerald); color: #f6f4ef; }
+  .ba-card p { font-size: 19px; font-weight: 600; padding: 0 6px 6px; }
+  @media (max-width: 900px) { .ba-grid { grid-template-columns: 1fr; } }
+
   /* Rule band */
   .rule { background: var(--ink); color: #f1efe8; }
   .rule .eyebrow { color: #d9c08f; }
@@ -255,8 +270,8 @@
           <span>Insured &amp; bonded</span><span>Background-checked team</span><span>Linens included</span>
         </div>
       </div>
-      <div class="photo reveal" role="img" aria-label="Photo placeholder: a guest-ready bedroom">
-        <div class="photo-label">Photo: guest-ready bedroom with fresh linens (to be supplied)</div>
+      <div class="photo reveal">
+        <img src="images/hero-living.jpg" alt="Bright, freshly cleaned living room in an Orange County rental" />
       </div>
     </div>
   </section>
@@ -380,6 +395,7 @@
         <p class="eyebrow">Why hosts choose Glowing</p>
         <h2>Your reviews depend on the turnover.</h2>
         <p class="muted">One missed detail can cost you a five-star review. We clean like the next guest is checking our work, because they are.</p>
+        <img class="why-photo" src="images/living-2.jpg" alt="Clean open living room and kitchen, ready for the next guest" loading="lazy" />
       </div>
       <div class="glass reveal" style="padding:8px 32px">
         <div class="checks">
@@ -392,8 +408,42 @@
     </div>
   </section>
 
-  <!-- 8. FAQ -->
+  <!-- 7. BEFORE & AFTER -->
   <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Real results</p>
+        <h2>The details guests notice</h2>
+        <p class="muted">From real Glowing cleans.</p>
+      </div>
+      <div class="ba-grid">
+        <div class="glass ba-card reveal">
+          <div class="ba-pair">
+            <div class="ba-tile"><img src="images/ba-oven-before.jpg" alt="Oven door glass before cleaning" loading="lazy" style="object-position:center 78%" /><span class="ba-tag">Before</span></div>
+            <div class="ba-tile after"><img src="images/ba-oven-after.jpg" alt="Oven door glass after cleaning" loading="lazy" style="object-position:center 78%" /><span class="ba-tag">After</span></div>
+          </div>
+          <p>Oven, inside and out</p>
+        </div>
+        <div class="glass ba-card reveal">
+          <div class="ba-pair">
+            <div class="ba-tile"><img src="images/ba-stove-before.jpg" alt="Stovetop before cleaning" loading="lazy" /><span class="ba-tag">Before</span></div>
+            <div class="ba-tile after"><img src="images/ba-stove-after.jpg" alt="Stovetop after cleaning" loading="lazy" /><span class="ba-tag">After</span></div>
+          </div>
+          <p>Stovetop, degreased</p>
+        </div>
+        <div class="glass ba-card reveal">
+          <div class="ba-pair">
+            <div class="ba-tile"><img src="images/ba-tub-before.jpg" alt="Bathtub before cleaning" loading="lazy" /><span class="ba-tag">Before</span></div>
+            <div class="ba-tile after"><img src="images/ba-tub-after.jpg" alt="Bathtub after cleaning" loading="lazy" /><span class="ba-tag">After</span></div>
+          </div>
+          <p>Bathtub, spotless</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="alt">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">FAQ</p>
